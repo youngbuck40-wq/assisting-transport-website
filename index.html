@@ -3,473 +3,846 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Assisting Transport LLC provides Non-Emergency Medical Transportation (NEMT) in Clark and Floyd Counties, Indiana. Wheelchair transport, ambulatory rides, Medicaid accepted." />
-  <meta name="keywords" content="non-emergency medical transportation, NEMT, wheelchair transport, ride to doctor, Medicaid transportation, Clark County Indiana, Floyd County Indiana, Jeffersonville, New Albany, Sellersburg, Clarksville" />
-  <title>Assisting Transport LLC | Non-Emergency Medical Transportation | Sellersburg, IN</title>
+  <meta name="description" content="Assisting Transport LLC — Non-Emergency Medical Transportation serving Kentuckiana since 2012. Wheelchair transport, medical rides, special events. Clark, Floyd, and surrounding counties." />
+  <meta name="keywords" content="non-emergency medical transportation, NEMT, wheelchair transport, ride to doctor, medical transport, Kentuckiana, Clark County Indiana, Floyd County Indiana, Jeffersonville, New Albany, Sellersburg, Clarksville, wheelchair van, medical rides" />
+  <title>Assisting Transport LLC | NEMT &amp; Special Event Transportation | Kentuckiana</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #0f2a5e;
-      --navy2:  #1a3a7c;
-      --orange: #f97316;
-      --orange2:#ea6c0a;
-      --white:  #ffffff;
-      --gray:   #f8fafc;
-      --text:   #1e293b;
-      --muted:  #64748b;
+      --navy:    #0d2550;
+      --navy2:   #163570;
+      --navy3:   #1e4494;
+      --orange:  #f97316;
+      --orange2: #ea6c0a;
+      --orange3: #fff7ed;
+      --white:   #ffffff;
+      --gray:    #f8fafc;
+      --gray2:   #f1f5f9;
+      --border:  #e2e8f0;
+      --text:    #0f172a;
+      --muted:   #64748b;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease forwards; }
+    .fade-up-2 { animation: fadeUp 0.7s 0.15s ease both; }
+    .fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
+    .fade-up-4 { animation: fadeUp 0.7s 0.45s ease both; }
 
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: var(--navy);
+      background: rgba(13, 37, 80, 0.97);
+      backdrop-filter: blur(12px);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%;
-      height: 68px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+      padding: 0 6%;
+      height: 70px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .nav-logo { color: white; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.3px; }
+    .nav-logo { color: white; font-size: 1.15rem; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; }
     .nav-logo span { color: var(--orange); }
     .nav-links { display: flex; align-items: center; gap: 2rem; }
-    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: white; }
+    .nav-phone { color: rgba(255,255,255,0.7) !important; font-size: 0.82rem !important; }
     .nav-cta {
-      background: var(--orange); color: white !important;
-      padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 700 !important;
-      transition: background 0.2s !important;
+      background: var(--orange) !important; color: white !important;
+      padding: 0.5rem 1.3rem; border-radius: 8px; font-weight: 700 !important;
+      font-size: 0.88rem !important; transition: background 0.2s !important;
     }
     .nav-cta:hover { background: var(--orange2) !important; }
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-    }
+    @media (max-width: 768px) { .nav-links { display: none; } }
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
-      padding: 140px 5% 80px;
+      min-height: 100vh;
+      background: linear-gradient(150deg, #061529 0%, #0d2550 40%, #163570 70%, #1a3d7a 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 120px 6% 80px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    .hero-bg-circle {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
     }
+    .hero-bg-circle.c1 { width: 600px; height: 600px; top: -150px; right: -100px; }
+    .hero-bg-circle.c2 { width: 400px; height: 400px; bottom: -100px; left: -80px; }
     .hero-badge {
-      display: inline-block;
-      background: rgba(249,115,22,0.15); color: var(--orange);
-      border: 1px solid rgba(249,115,22,0.3);
-      padding: 0.35rem 1rem; border-radius: 999px;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
-      margin-bottom: 1.5rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(249,115,22,0.15); color: #fdba74;
+      border: 1px solid rgba(249,115,22,0.25);
+      padding: 0.4rem 1rem; border-radius: 999px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.3px;
+      margin-bottom: 2rem; position: relative;
     }
+    .hero-badge::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--orange); display: inline-block;
+      animation: pulse-ring 1.5s infinite;
+      position: absolute; left: 14px;
+    }
+    .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
     .hero h1 {
-      color: white; font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem;
-      letter-spacing: -0.5px;
+      color: white; font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;
+      letter-spacing: -1px;
     }
-    .hero h1 span { color: var(--orange); }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--orange), #fb923c);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
     .hero p {
-      color: rgba(255,255,255,0.8); font-size: clamp(1rem, 2vw, 1.2rem);
-      max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.7;
+      color: rgba(255,255,255,0.75); font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.8;
     }
-    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+    .btn-orange {
       background: var(--orange); color: white;
-      padding: 0.85rem 2rem; border-radius: 10px;
+      padding: 1rem 2.2rem; border-radius: 12px;
       font-weight: 700; font-size: 1rem; text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.6rem;
+      box-shadow: 0 4px 20px rgba(249,115,22,0.4);
     }
-    .btn-primary:hover { background: var(--orange2); transform: translateY(-1px); }
-    .btn-secondary {
-      background: rgba(255,255,255,0.12); color: white;
-      border: 2px solid rgba(255,255,255,0.3);
-      padding: 0.85rem 2rem; border-radius: 10px;
+    .btn-orange:hover { background: var(--orange2); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(249,115,22,0.5); }
+    .btn-outline {
+      background: rgba(255,255,255,0.08); color: white;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      padding: 1rem 2.2rem; border-radius: 12px;
       font-weight: 700; font-size: 1rem; text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.6rem;
+      backdrop-filter: blur(8px);
     }
-    .btn-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-1px); }
+    .btn-outline:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+
+    /* Hero stats */
     .hero-stats {
-      display: flex; justify-content: center; gap: 3rem;
-      margin-top: 3.5rem; flex-wrap: wrap;
+      display: flex; gap: 0; justify-content: center;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; overflow: hidden; backdrop-filter: blur(8px);
+      flex-wrap: wrap;
     }
-    .hero-stat { text-align: center; }
-    .hero-stat strong { display: block; color: white; font-size: 1.8rem; font-weight: 800; }
-    .hero-stat span { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+    .hero-stat {
+      padding: 1.2rem 2.5rem; text-align: center; position: relative;
+    }
+    .hero-stat:not(:last-child)::after {
+      content: ''; position: absolute; right: 0; top: 20%; bottom: 20%;
+      width: 1px; background: rgba(255,255,255,0.1);
+    }
+    .hero-stat strong { display: block; color: white; font-size: 1.7rem; font-weight: 800; line-height: 1; margin-bottom: 0.3rem; }
+    .hero-stat span { color: rgba(255,255,255,0.55); font-size: 0.78rem; font-weight: 500; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--navy); padding: 1rem 6%;
+      display: flex; justify-content: center; align-items: center;
+      gap: 2.5rem; flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .trust-item { display: flex; align-items: center; gap: 0.6rem; color: rgba(255,255,255,0.75); font-size: 0.85rem; font-weight: 500; }
+    .trust-item span { color: var(--orange); font-size: 1rem; }
 
     /* ── SECTIONS ── */
-    section { padding: 80px 5%; }
-    .section-label {
-      color: var(--orange); font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.75rem;
+    section { padding: 90px 6%; }
+    .section-tag {
+      display: inline-block; color: var(--orange);
+      background: var(--orange3); border: 1px solid #fed7aa;
+      padding: 0.3rem 0.9rem; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 1rem;
     }
     h2 {
-      font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800;
-      letter-spacing: -0.3px; margin-bottom: 1rem; color: var(--navy);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800;
+      letter-spacing: -0.5px; color: var(--navy); line-height: 1.2;
     }
-    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 560px; }
-    .section-header { margin-bottom: 3rem; }
+    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.8; max-width: 540px; margin-top: 0.75rem; }
+    .text-center { text-align: center; }
+    .text-center .section-sub { margin: 0.75rem auto 0; }
 
     /* ── SERVICES ── */
     #services { background: var(--gray); }
     .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
     }
     .service-card {
-      background: white; border-radius: 16px;
-      padding: 2rem; border: 1px solid #e2e8f0;
-      transition: box-shadow 0.2s, transform 0.2s;
+      background: white; border-radius: 20px; padding: 2rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s; cursor: default;
+      position: relative; overflow: hidden;
     }
-    .service-card:hover { box-shadow: 0 8px 30px rgba(15,42,94,0.1); transform: translateY(-3px); }
-    .service-icon {
-      width: 52px; height: 52px; border-radius: 12px;
-      background: linear-gradient(135deg, var(--navy), var(--navy2));
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--orange));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { box-shadow: 0 12px 40px rgba(13,37,80,0.12); transform: translateY(-4px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .svc-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--navy), var(--navy3));
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1.2rem;
+      font-size: 1.6rem; margin-bottom: 1.25rem;
+      animation: float 4s ease-in-out infinite;
     }
-    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
-    .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+    .service-card:nth-child(2) .svc-icon { animation-delay: 0.5s; }
+    .service-card:nth-child(3) .svc-icon { animation-delay: 1s; }
+    .service-card:nth-child(4) .svc-icon { animation-delay: 1.5s; }
+    .service-card:nth-child(5) .svc-icon { animation-delay: 2s; }
+    .service-card:nth-child(6) .svc-icon { animation-delay: 2.5s; }
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
+    .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
 
     /* ── WHY US ── */
     .why-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem; margin-top: 3rem;
     }
-    .why-item { text-align: center; }
+    .why-card {
+      text-align: center; padding: 2rem 1.5rem;
+      background: var(--gray); border-radius: 20px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .why-card:hover { background: white; box-shadow: 0 8px 30px rgba(13,37,80,0.08); transform: translateY(-3px); }
     .why-icon {
-      width: 64px; height: 64px; border-radius: 50%;
-      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      width: 68px; height: 68px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--navy3));
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem; margin: 0 auto 1rem;
+      font-size: 1.8rem; margin: 0 auto 1.25rem;
     }
-    .why-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--navy); }
-    .why-item p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+    .why-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .why-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
 
-    /* ── AREA ── */
-    #area { background: var(--navy); }
-    #area h2 { color: white; }
-    #area .section-label { color: var(--orange); }
-    #area .section-sub { color: rgba(255,255,255,0.7); }
-    .area-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 2.5rem;
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--navy); }
+    #testimonials h2 { color: white; }
+    #testimonials .section-tag { background: rgba(249,115,22,0.15); color: #fdba74; border-color: rgba(249,115,22,0.25); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
     }
-    .area-card {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 12px; padding: 1.25rem 1rem; text-align: center;
+    .testimonial-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 2rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s;
     }
-    .area-card .city { color: white; font-weight: 700; font-size: 1rem; }
-    .area-card .county { color: rgba(255,255,255,0.55); font-size: 0.8rem; margin-top: 0.2rem; }
+    .testimonial-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+    .stars { color: #fbbf24; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .testimonial-card p { color: rgba(255,255,255,0.85); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.25rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .author-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), #fb923c);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
+    }
+    .author-name { color: white; font-weight: 700; font-size: 0.9rem; }
+    .author-label { color: rgba(255,255,255,0.5); font-size: 0.78rem; }
+
+    /* ── SERVICE AREA ── */
+    #area { background: var(--gray2); }
+    .area-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    @media (max-width: 768px) { .area-intro { grid-template-columns: 1fr; gap: 2rem; } }
+    .area-cities {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem;
+    }
+    .area-city {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.75rem 1rem;
+      font-size: 0.9rem; font-weight: 600; color: var(--navy);
+      transition: all 0.2s;
+    }
+    .area-city:hover { border-color: var(--orange); background: var(--orange3); }
+    .area-city span { color: var(--orange); }
+    .area-map-placeholder {
+      background: linear-gradient(135deg, var(--navy), var(--navy2));
+      border-radius: 24px; padding: 3rem;
+      text-align: center; color: white;
+      box-shadow: 0 20px 60px rgba(13,37,80,0.2);
+    }
+    .area-map-placeholder .map-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .area-map-placeholder h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .area-map-placeholder p { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.7; }
+    .area-map-placeholder .call-now {
+      display: inline-block; margin-top: 1.5rem;
+      background: var(--orange); color: white;
+      padding: 0.75rem 1.5rem; border-radius: 10px;
+      font-weight: 700; text-decoration: none; font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .area-map-placeholder .call-now:hover { background: var(--orange2); }
+
+    /* ── FAQ ── */
+    #faq { background: white; }
+    .faq-list { max-width: 720px; margin: 3rem auto 0; }
+    .faq-item {
+      border: 1px solid var(--border); border-radius: 14px;
+      margin-bottom: 0.75rem; overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .faq-item:hover { box-shadow: 0 4px 20px rgba(13,37,80,0.08); }
+    .faq-question {
+      width: 100%; background: none; border: none; cursor: pointer;
+      padding: 1.25rem 1.5rem; text-align: left;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: inherit; font-size: 0.95rem; font-weight: 700; color: var(--navy);
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: var(--gray); }
+    .faq-question.open { background: var(--gray); }
+    .faq-chevron { font-size: 1.1rem; transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+    .faq-question.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+    }
+    .faq-answer.open { max-height: 200px; }
+    .faq-answer p { padding: 0 1.5rem 1.25rem; color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
 
     /* ── CONTACT ── */
     #contact { background: var(--gray); }
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start;
     }
-    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
-    .contact-info h3 { font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: 1.5rem; }
-    .contact-item {
+    @media (max-width: 900px) { .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .contact-left h2 { margin-bottom: 1rem; }
+    .contact-left p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem; }
+    .contact-detail {
       display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;
     }
-    .contact-item-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--navy); color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; flex-shrink: 0;
+    .cd-icon {
+      width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--navy), var(--navy3));
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
     }
-    .contact-item-text strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 0.15rem; }
-    .contact-item-text span { color: var(--muted); font-size: 0.9rem; }
-    .contact-item-text a { color: var(--navy); text-decoration: none; font-weight: 600; }
-    .contact-item-text a:hover { color: var(--orange); }
+    .cd-text strong { display: block; font-weight: 700; color: var(--navy); font-size: 0.88rem; margin-bottom: 0.2rem; }
+    .cd-text a, .cd-text span { color: var(--muted); text-decoration: none; font-size: 0.9rem; line-height: 1.6; display: block; }
+    .cd-text a:hover { color: var(--orange); }
+    .hours-box {
+      background: white; border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.25rem 1.5rem; margin-top: 0.5rem;
+    }
+    .hours-box h4 { font-size: 0.85rem; font-weight: 700; color: var(--navy); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .hours-row { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 0.4rem; }
+    .hours-row span:first-child { color: var(--muted); }
+    .hours-row span:last-child { font-weight: 600; color: var(--navy); }
+    .hours-note { font-size: 0.8rem; color: var(--orange); font-weight: 600; margin-top: 0.75rem; }
 
     /* Form */
-    .contact-form { background: white; border-radius: 16px; padding: 2rem; border: 1px solid #e2e8f0; }
-    .contact-form h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 1.5rem; }
+    .contact-form {
+      background: white; border-radius: 24px; padding: 2.5rem;
+      box-shadow: 0 20px 60px rgba(13,37,80,0.1);
+      border: 1px solid var(--border);
+    }
+    .contact-form h3 { font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 0.4rem; }
+    .contact-form .form-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 1.75rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%; padding: 0.7rem 0.9rem;
-      border: 1.5px solid #e2e8f0; border-radius: 8px;
-      font-size: 0.9rem; font-family: inherit; color: var(--text);
-      transition: border-color 0.2s;
-      outline: none;
+    .fg { margin-bottom: 1rem; }
+    .fg label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.3px; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; padding: 0.8rem 1rem;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      font-size: 0.92rem; font-family: inherit; color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+      background: var(--gray);
     }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--navy);
+    .fg input:focus, .fg select:focus, .fg textarea:focus {
+      border-color: var(--navy); background: white;
+      box-shadow: 0 0 0 3px rgba(13,37,80,0.08);
     }
-    .form-group textarea { resize: vertical; min-height: 90px; }
-    .form-submit {
-      width: 100%; background: var(--orange); color: white;
-      border: none; padding: 0.9rem; border-radius: 10px;
-      font-size: 1rem; font-weight: 700; cursor: pointer;
-      font-family: inherit; transition: background 0.2s;
+    .fg textarea { resize: vertical; min-height: 100px; }
+    .form-btn {
+      width: 100%; background: linear-gradient(135deg, var(--orange), var(--orange2));
+      color: white; border: none; padding: 1rem;
+      border-radius: 12px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; font-family: inherit;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(249,115,22,0.35);
     }
-    .form-submit:hover { background: var(--orange2); }
-    .form-note { color: var(--muted); font-size: 0.8rem; text-align: center; margin-top: 0.75rem; }
+    .form-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(249,115,22,0.45); }
+    .form-note { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 0.75rem; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 100%);
+      padding: 70px 6%; text-align: center;
+    }
+    .cta-banner h2 { color: white; margin-bottom: 1rem; }
+    .cta-banner p { color: rgba(255,255,255,0.75); max-width: 500px; margin: 0 auto 2rem; line-height: 1.8; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     /* ── FOOTER ── */
     footer {
-      background: #0a1e42; color: rgba(255,255,255,0.7);
-      padding: 2.5rem 5%; text-align: center;
+      background: #060f1f; color: rgba(255,255,255,0.6);
+      padding: 3rem 6% 2rem;
     }
-    footer strong { color: white; }
-    footer p { font-size: 0.88rem; line-height: 1.8; }
-    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
-    footer a:hover { color: white; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+      padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .footer-brand .logo { color: white; font-size: 1.1rem; font-weight: 800; }
+    .footer-brand .logo span { color: var(--orange); }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.8; margin-top: 0.75rem; max-width: 300px; }
+    .footer-col h4 { color: white; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 1rem; }
+    .footer-col a, .footer-col p { display: block; color: rgba(255,255,255,0.55); font-size: 0.88rem; text-decoration: none; line-height: 1.9; transition: color 0.2s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { font-size: 0.82rem; }
+    .footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; }
+    .footer-bottom a:hover { color: white; }
 
-    /* ── PAYERS BANNER ── */
-    .payers {
-      background: white; padding: 2rem 5%;
-      border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;
-      text-align: center;
-    }
-    .payers p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
-    .payers-list { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-    .payer-badge {
-      background: var(--gray); border: 1.5px solid #e2e8f0;
-      padding: 0.5rem 1.2rem; border-radius: 999px;
-      font-size: 0.88rem; font-weight: 600; color: var(--navy);
-    }
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-2 { transition-delay: 0.1s; }
+    .reveal-3 { transition-delay: 0.2s; }
+    .reveal-4 { transition-delay: 0.3s; }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">Assisting <span>Transport</span> LLC</div>
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#why">Why Us</a>
-      <a href="#area">Service Area</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="nav-cta">Get a Quote</a>
-    </div>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Assisting <span>Transport</span> LLC</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#area">Service Area</a>
+    <a href="#faq">FAQ</a>
+    <a href="tel:8127489123" class="nav-phone">📞 (812) 748-9123</a>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-badge">Serving Clark &amp; Floyd Counties, Indiana</div>
-    <h1>Your Ride to<br><span>Better Health</span></h1>
-    <p>Reliable, compassionate Non-Emergency Medical Transportation for patients who need a safe, on-time ride to their medical appointments.</p>
-    <div class="hero-buttons">
-      <a href="#contact" class="btn-primary">📋 Get a Free Quote</a>
-      <a href="tel:8127489123" class="btn-secondary">📞 (812) 748-9123</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><strong>Clark &amp; Floyd</strong><span>Counties Served</span></div>
-      <div class="hero-stat"><strong>Medicaid</strong><span>Accepted</span></div>
-      <div class="hero-stat"><strong>Licensed</strong><span>&amp; Insured</span></div>
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="hero-badge"><span class="hero-badge-dot"></span> Serving Kentuckiana Since 2012</div>
+  <h1 class="fade-up">Your Ride to<br><span class="highlight">Better Health</span><br>&amp; Beyond</h1>
+  <p class="fade-up-2">Reliable, compassionate transportation for medical appointments, special events, and everything in between. Serving Clark, Floyd, and surrounding counties.</p>
+  <div class="hero-btns fade-up-3">
+    <a href="#contact" class="btn-orange">📋 Get a Free Quote</a>
+    <a href="tel:8127489123" class="btn-outline">📞 Call (812) 748-9123</a>
+  </div>
+  <div class="hero-stats fade-up-4">
+    <div class="hero-stat"><strong>14+</strong><span>Years in Business</span></div>
+    <div class="hero-stat"><strong>Clark &amp; Floyd</strong><span>+ Surrounding Counties</span></div>
+    <div class="hero-stat"><strong>Licensed</strong><span>&amp; Insured</span></div>
+    <div class="hero-stat"><strong>Call or Text</strong><span>Available</span></div>
+  </div>
+</section>
 
-  <!-- PAYERS -->
-  <div class="payers">
-    <p>Insurance &amp; Payers Accepted</p>
-    <div class="payers-list">
-      <span class="payer-badge">Medicaid</span>
-      <span class="payer-badge">Medicare</span>
-      <span class="payer-badge">Private Pay</span>
-      <span class="payer-badge">Insurance</span>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>✅</span> Licensed &amp; Insured</div>
+  <div class="trust-item"><span>⏰</span> On-Time Pickup</div>
+  <div class="trust-item"><span>👨‍✈️</span> Background-Checked Drivers</div>
+  <div class="trust-item"><span>📍</span> Locally Owned &amp; Operated</div>
+  <div class="trust-item"><span>🏆</span> 14 Years Serving Kentuckiana</div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="text-center reveal">
+    <div class="section-tag">What We Offer</div>
+    <h2>Transportation for Every Need</h2>
+    <p class="section-sub">From medical appointments to life's special moments — we'll get you there safely and on time.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="svc-icon">♿</div>
+      <h3>Wheelchair Transport</h3>
+      <p>Fully equipped wheelchair accessible vehicles with trained drivers for patients who use wheelchairs or power chairs.</p>
+    </div>
+    <div class="service-card reveal reveal-2">
+      <div class="svc-icon">🚶</div>
+      <h3>Ambulatory Transport</h3>
+      <p>Door-to-door rides for patients who can walk but need a reliable, safe ride to their medical appointments.</p>
+    </div>
+    <div class="service-card reveal reveal-3">
+      <div class="svc-icon">🏥</div>
+      <h3>Medical Appointments</h3>
+      <p>Dialysis, doctor visits, physical therapy, specialist appointments, and more across the Kentuckiana region.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="svc-icon">💒</div>
+      <h3>Weddings &amp; Funerals</h3>
+      <p>Dignified, reliable transportation for your most important life events. We ensure everyone arrives safely and on time.</p>
+    </div>
+    <div class="service-card reveal reveal-2">
+      <div class="svc-icon">🎓</div>
+      <h3>Special Events</h3>
+      <p>Graduations, family reunions, birthday celebrations, airport rides, and any occasion that matters to you.</p>
+    </div>
+    <div class="service-card reveal reveal-3">
+      <div class="svc-icon">✈️</div>
+      <h3>Airport &amp; Long Distance</h3>
+      <p>Need a ride to Louisville or beyond? We handle airport transfers and longer trips throughout the region.</p>
     </div>
   </div>
+</section>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section-header">
-      <div class="section-label">What We Offer</div>
-      <h2>Transportation Services</h2>
-      <p class="section-sub">We provide safe, comfortable rides for patients with a variety of mobility needs.</p>
+<!-- WHY US -->
+<section id="why" style="background: white;">
+  <div class="text-center reveal">
+    <div class="section-tag">Why Choose Us</div>
+    <h2>The Assisting Transport Difference</h2>
+    <p class="section-sub">We've been earning the trust of Kentuckiana families and healthcare facilities for over 14 years.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon">✅</div>
+      <h3>Licensed &amp; Insured</h3>
+      <p>Fully licensed, insured, and compliant with all Indiana and Kentucky NEMT regulations.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">♿</div>
-        <h3>Wheelchair Transport</h3>
-        <p>Fully equipped wheelchair accessible vehicles with trained drivers for patients who use wheelchairs or power chairs.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🚶</div>
-        <h3>Ambulatory Transport</h3>
-        <p>Door-to-door rides for patients who can walk but need a reliable, safe ride to their medical appointments.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🛏️</div>
-        <h3>Stretcher Transport</h3>
-        <p>Non-emergency stretcher transport for patients who need to remain lying down during transport.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🏥</div>
-        <h3>Medical Appointments</h3>
-        <p>Rides to doctor visits, dialysis, physical therapy, specialist appointments, and more across Southern Indiana.</p>
-      </div>
+    <div class="why-card reveal reveal-2">
+      <div class="why-icon">⏰</div>
+      <h3>On-Time Every Time</h3>
+      <p>We show up when we say we will. Missing an appointment is never an option.</p>
     </div>
-  </section>
+    <div class="why-card reveal reveal-3">
+      <div class="why-icon">👨‍✈️</div>
+      <h3>Professional Drivers</h3>
+      <p>Background-checked, trained drivers who treat every passenger with dignity and respect.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon">📍</div>
+      <h3>Local &amp; Trusted</h3>
+      <p>Locally owned and operated in Sellersburg since 2012. We know these roads and communities.</p>
+    </div>
+    <div class="why-card reveal reveal-2">
+      <div class="why-icon">📞</div>
+      <h3>Easy to Reach</h3>
+      <p>Call or text us. We work with patients, families, facilities, and case managers.</p>
+    </div>
+    <div class="why-card reveal reveal-3">
+      <div class="why-icon">❤️</div>
+      <h3>Compassionate Care</h3>
+      <p>We treat every passenger like family — because that's exactly how they deserve to be treated.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- WHY US -->
-  <section id="why">
-    <div class="section-header">
-      <div class="section-label">Why Choose Us</div>
-      <h2>The Assisting Transport Difference</h2>
-      <p class="section-sub">We treat every patient with the dignity and care they deserve on every single trip.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="why-icon">✅</div>
-        <h3>Licensed &amp; Insured</h3>
-        <p>Fully licensed, insured, and compliant with Indiana NEMT regulations.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">⏰</div>
-        <h3>On-Time Pickup</h3>
-        <p>We show up when we say we will so patients never miss an appointment.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">💳</div>
-        <h3>Medicaid Accepted</h3>
-        <p>We work with Medicaid, Medicare, and most insurance providers.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">👨‍✈️</div>
-        <h3>Professional Drivers</h3>
-        <p>Background-checked, trained drivers who treat patients with respect and compassion.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">📍</div>
-        <h3>Local Company</h3>
-        <p>Locally owned and operated — we know the roads and communities we serve.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">📞</div>
-        <h3>Easy Scheduling</h3>
-        <p>Simple booking by phone. We work with facilities, case managers, and families.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICE AREA -->
-  <section id="area">
-    <div class="section-header">
-      <div class="section-label">Where We Serve</div>
-      <h2>Service Area</h2>
-      <p class="section-sub">Proudly serving Clark and Floyd Counties in Southern Indiana with reliable medical transportation.</p>
-    </div>
-    <div class="area-grid">
-      <div class="area-card"><div class="city">Sellersburg</div><div class="county">Clark County</div></div>
-      <div class="area-card"><div class="city">Jeffersonville</div><div class="county">Clark County</div></div>
-      <div class="area-card"><div class="city">Clarksville</div><div class="county">Clark County</div></div>
-      <div class="area-card"><div class="city">Charlestown</div><div class="county">Clark County</div></div>
-      <div class="area-card"><div class="city">New Albany</div><div class="county">Floyd County</div></div>
-      <div class="area-card"><div class="city">Floyds Knobs</div><div class="county">Floyd County</div></div>
-      <div class="area-card"><div class="city">Georgetown</div><div class="county">Floyd County</div></div>
-      <div class="area-card"><div class="city">And surrounding areas</div><div class="county">Southern Indiana</div></div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-grid">
-      <div class="contact-info">
-        <div class="section-label">Get In Touch</div>
-        <h2>Request a Ride or Get a Quote</h2>
-        <p class="section-sub" style="margin-bottom:2rem;">Call us or fill out the form and we will get back to you promptly.</p>
-        <div class="contact-item">
-          <div class="contact-item-icon">📞</div>
-          <div class="contact-item-text">
-            <strong>Phone</strong>
-            <span><a href="tel:8127489123">(812) 748-9123</a></span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">✉️</div>
-          <div class="contact-item-text">
-            <strong>Email</strong>
-            <span><a href="mailto:assistingtransportllc@gmail.com">assistingtransportllc@gmail.com</a></span>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-item-icon">📍</div>
-          <div class="contact-item-text">
-            <strong>Address</strong>
-            <span>480 N Indiana Ave<br>Sellersburg, IN 47172</span>
-          </div>
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="text-center reveal">
+    <div class="section-tag">What People Say</div>
+    <h2 style="color:white;">Real Words From Real Passengers</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"Great service and prompt communication. Highly recommend Assisting Transport for anyone needing reliable medical transportation."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">GS</div>
+        <div>
+          <div class="author-name">George Stevens</div>
+          <div class="author-label">Google Review</div>
         </div>
       </div>
-
-      <div class="contact-form">
-        <h3>Request a Quote</h3>
-        <form action="https://formspree.io/f/assistingtransportllc" method="POST">
-          <div class="form-row">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" name="firstName" placeholder="John" required />
-            </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" name="lastName" placeholder="Smith" required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Phone Number</label>
-              <input type="tel" name="phone" placeholder="(812) 555-0000" required />
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" name="email" placeholder="you@email.com" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Pickup City</label>
-            <select name="pickupCity">
-              <option value="">Select a city...</option>
-              <option>Sellersburg</option>
-              <option>Jeffersonville</option>
-              <option>Clarksville</option>
-              <option>Charlestown</option>
-              <option>New Albany</option>
-              <option>Floyds Knobs</option>
-              <option>Georgetown</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Type of Transport Needed</label>
-            <select name="transportType">
-              <option value="">Select...</option>
-              <option>Ambulatory (can walk)</option>
-              <option>Wheelchair</option>
-              <option>Stretcher</option>
-              <option>Not sure</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Message / Additional Details</label>
-            <textarea name="message" placeholder="Tell us about your transportation needs, appointment details, or any questions..."></textarea>
-          </div>
-          <input type="hidden" name="_subject" value="New Quote Request - Assisting Transport" />
-          <input type="hidden" name="_replyto" value="assistingtransportllc@gmail.com" />
-          <button type="submit" class="form-submit">Send Quote Request</button>
-          <p class="form-note">We typically respond within a few hours during business hours.</p>
-        </form>
+    </div>
+    <div class="testimonial-card reveal reveal-2">
+      <div class="stars">★★★★★</div>
+      <p>"Their wonderful dispatcher and the friendly drivers have been a Godsend. We don't know what we would do without them."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">MS</div>
+        <div>
+          <div class="author-name">Mike Spaulding</div>
+          <div class="author-label">Google Review</div>
+        </div>
       </div>
     </div>
-  </section>
+    <div class="testimonial-card reveal reveal-3">
+      <div class="stars">★★★★★</div>
+      <p>"They do a terrific job getting my husband safely to his appointments. Always on time and so professional."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">BJ</div>
+        <div>
+          <div class="author-name">Brenda Jones</div>
+          <div class="author-label">Google Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p><strong>Assisting Transport LLC</strong></p>
-    <p>480 N Indiana Ave, Sellersburg, IN 47172 &nbsp;|&nbsp; <a href="tel:8127489123">(812) 748-9123</a> &nbsp;|&nbsp; <a href="mailto:assistingtransportllc@gmail.com">assistingtransportllc@gmail.com</a></p>
-    <p style="margin-top:0.5rem;">Non-Emergency Medical Transportation serving Clark &amp; Floyd Counties, Indiana</p>
-    <p style="margin-top:1rem; font-size:0.78rem; opacity:0.5;">&copy; 2026 Assisting Transport LLC. All rights reserved.</p>
-  </footer>
+<!-- SERVICE AREA -->
+<section id="area">
+  <div class="area-intro">
+    <div class="reveal">
+      <div class="section-tag">Where We Serve</div>
+      <h2>Proudly Serving Kentuckiana</h2>
+      <p class="section-sub">We cover Clark, Floyd, and surrounding counties in Southern Indiana — and beyond when you need us.</p>
+      <div class="area-cities">
+        <div class="area-city"><span>📍</span> Sellersburg</div>
+        <div class="area-city"><span>📍</span> Jeffersonville</div>
+        <div class="area-city"><span>📍</span> Clarksville</div>
+        <div class="area-city"><span>📍</span> Charlestown</div>
+        <div class="area-city"><span>📍</span> New Albany</div>
+        <div class="area-city"><span>📍</span> Floyds Knobs</div>
+        <div class="area-city"><span>📍</span> Georgetown</div>
+        <div class="area-city"><span>📍</span> &amp; Surrounding Areas</div>
+      </div>
+    </div>
+    <div class="area-map-placeholder reveal reveal-2">
+      <div class="map-icon">🗺️</div>
+      <h3>Clark, Floyd &amp; Surrounding Counties</h3>
+      <p>Serving the entire Kentuckiana region including Southern Indiana and Northern Kentucky. Not sure if we cover your area? Just call or text us.</p>
+      <a href="tel:8127489123" class="call-now">📞 Call to Check Your Area</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="text-center reveal">
+    <div class="section-tag">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+    <p class="section-sub">Have a question? We probably have the answer below. If not, just call or text us.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Do you accept Medicaid or insurance? <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes — we work with Medicaid, Medicare, private insurance, and private pay. Contact us with your insurance information and we'll verify coverage for your transportation needs.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal reveal-2">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How far in advance do I need to book? <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <p>We recommend booking at least 24 hours in advance when possible. Same-day rides may be available depending on our schedule — call or text us and we'll do our best to accommodate you.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal reveal-3">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Do you travel to Kentucky? <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes — we serve the greater Kentuckiana region. Call us with your pickup and drop-off locations and we'll confirm availability and pricing for out-of-area trips.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can a family member or escort ride along? <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <p>Yes — a family member or escort is welcome to ride along. Please let us know when booking so we can accommodate everyone comfortably.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal reveal-2">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Do you only do medical transportation? <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <p>No — while medical transportation is our specialty, we also provide rides to weddings, funerals, graduations, family reunions, airports, and any other occasion. If you need a reliable ride, we're here.</p>
+      </div>
+    </div>
+    <div class="faq-item reveal reveal-3">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What are your hours? <span class="faq-chevron">▾</span>
+      </button>
+      <div class="faq-answer">
+        <p>Our regular hours are Monday–Friday 7:00 AM to 5:00 PM. After-hours, weekend, and holiday service is available — rates vary. Call or text (502) 643-6005 for availability outside regular hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-left reveal">
+      <div class="section-tag">Get In Touch</div>
+      <h2>Request a Ride or Get a Free Quote</h2>
+      <p>Fill out the form and we'll get back to you promptly. Prefer to talk? Call or text us directly.</p>
+      <div class="contact-detail">
+        <div class="cd-icon">📞</div>
+        <div class="cd-text">
+          <strong>Call Us</strong>
+          <a href="tel:8127489123">(812) 748-9123</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">💬</div>
+        <div class="cd-text">
+          <strong>Text Us</strong>
+          <a href="sms:5026436005">(502) 643-6005</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">✉️</div>
+        <div class="cd-text">
+          <strong>Email</strong>
+          <a href="mailto:assistingtransportllc@gmail.com">assistingtransportllc@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="cd-icon">📍</div>
+        <div class="cd-text">
+          <strong>Address</strong>
+          <span>480 N Indiana Ave<br>Sellersburg, IN 47172</span>
+        </div>
+      </div>
+      <div class="hours-box">
+        <h4>Hours of Operation</h4>
+        <div class="hours-row"><span>Monday – Friday</span><span>7:00 AM – 5:00 PM</span></div>
+        <div class="hours-row"><span>Saturday – Sunday</span><span>By Request</span></div>
+        <div class="hours-row"><span>After Hours</span><span>Available (rates vary)</span></div>
+        <p class="hours-note">📱 Text (502) 643-6005 for after-hours availability</p>
+      </div>
+    </div>
+
+    <div class="contact-form reveal reveal-2">
+      <h3>Request a Free Quote</h3>
+      <p class="form-sub">We typically respond within a few hours during business hours.</p>
+      <form action="https://formspree.io/f/assistingtransportllc" method="POST">
+        <div class="form-row">
+          <div class="fg">
+            <label>First Name</label>
+            <input type="text" name="firstName" placeholder="John" required />
+          </div>
+          <div class="fg">
+            <label>Last Name</label>
+            <input type="text" name="lastName" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fg">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="(812) 555-0000" required />
+          </div>
+          <div class="fg">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="you@email.com" />
+          </div>
+        </div>
+        <div class="fg">
+          <label>Pickup City</label>
+          <select name="pickupCity">
+            <option value="">Select a city...</option>
+            <option>Sellersburg</option>
+            <option>Jeffersonville</option>
+            <option>Clarksville</option>
+            <option>Charlestown</option>
+            <option>New Albany</option>
+            <option>Floyds Knobs</option>
+            <option>Georgetown</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Type of Transportation</label>
+          <select name="transportType">
+            <option value="">Select...</option>
+            <option>Medical Appointment</option>
+            <option>Wheelchair Transport</option>
+            <option>Wedding / Funeral</option>
+            <option>Special Event</option>
+            <option>Airport Ride</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Message / Details</label>
+          <textarea name="message" placeholder="Tell us about your transportation needs, appointment details, or any questions..."></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New Quote Request - Assisting Transport" />
+        <button type="submit" class="form-btn">Send Quote Request →</button>
+        <p class="form-note">Or call/text us directly — (812) 748-9123 / (502) 643-6005</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Book Your Ride?</h2>
+  <p>Call, text, or fill out our quote form. We'll take care of the rest.</p>
+  <div class="cta-btns">
+    <a href="tel:8127489123" class="btn-orange">📞 Call (812) 748-9123</a>
+    <a href="sms:5026436005" class="btn-outline">💬 Text (502) 643-6005</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">Assisting <span>Transport</span> LLC</div>
+      <p>Reliable, compassionate Non-Emergency Medical Transportation and special event rides serving Kentuckiana since 2012.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Wheelchair Transport</a>
+      <a href="#services">Ambulatory Transport</a>
+      <a href="#services">Medical Appointments</a>
+      <a href="#services">Weddings &amp; Funerals</a>
+      <a href="#services">Special Events</a>
+      <a href="#services">Airport Rides</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:8127489123">📞 (812) 748-9123</a>
+      <a href="sms:5026436005">💬 (502) 643-6005 (Text)</a>
+      <a href="mailto:assistingtransportllc@gmail.com">assistingtransportllc@gmail.com</a>
+      <p>480 N Indiana Ave<br>Sellersburg, IN 47172</p>
+      <p style="margin-top:0.5rem;">Mon–Fri: 7:00 AM – 5:00 PM</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Assisting Transport LLC. All rights reserved.</p>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling
+    const isOpen = answer.classList.contains('open')
+    document.querySelectorAll('.faq-answer.open').forEach(a => a.classList.remove('open'))
+    document.querySelectorAll('.faq-question.open').forEach(b => b.classList.remove('open'))
+    if (!isOpen) { answer.classList.add('open'); btn.classList.add('open') }
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target) } })
+  }, { threshold: 0.1 })
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+</script>
 
 </body>
 </html>
