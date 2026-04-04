@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Assisting Transport LLC provides Non-Emergency Medical Transportation (NEMT) in Clark and Floyd Counties, Indiana. Wheelchair transport, ambulatory rides, Medicaid accepted." />
+  <meta name="keywords" content="non-emergency medical transportation, NEMT, wheelchair transport, ride to doctor, Medicaid transportation, Clark County Indiana, Floyd County Indiana, Jeffersonville, New Albany, Sellersburg, Clarksville" />
+  <title>Assisting Transport LLC | Non-Emergency Medical Transportation | Sellersburg, IN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0f2a5e;
+      --navy2:  #1a3a7c;
+      --orange: #f97316;
+      --orange2:#ea6c0a;
+      --white:  #ffffff;
+      --gray:   #f8fafc;
+      --text:   #1e293b;
+      --muted:  #64748b;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+    .nav-logo { color: white; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.3px; }
+    .nav-logo span { color: var(--orange); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: white; }
+    .nav-cta {
+      background: var(--orange); color: white !important;
+      padding: 0.5rem 1.2rem; border-radius: 8px; font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--orange2) !important; }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+      padding: 140px 5% 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(249,115,22,0.15); color: var(--orange);
+      border: 1px solid rgba(249,115,22,0.3);
+      padding: 0.35rem 1rem; border-radius: 999px;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      color: white; font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 span { color: var(--orange); }
+    .hero p {
+      color: rgba(255,255,255,0.8); font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: white;
+      padding: 0.85rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover { background: var(--orange2); transform: translateY(-1px); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.12); color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 0.85rem 2rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-1px); }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 3rem;
+      margin-top: 3.5rem; flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat strong { display: block; color: white; font-size: 1.8rem; font-weight: 800; }
+    .hero-stat span { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 5%; }
+    .section-label {
+      color: var(--orange); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800;
+      letter-spacing: -0.3px; margin-bottom: 1rem; color: var(--navy);
+    }
+    .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; max-width: 560px; }
+    .section-header { margin-bottom: 3rem; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--gray); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;
+    }
+    .service-card {
+      background: white; border-radius: 16px;
+      padding: 2rem; border: 1px solid #e2e8f0;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 30px rgba(15,42,94,0.1); transform: translateY(-3px); }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--navy2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--navy); }
+    .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;
+    }
+    .why-item { text-align: center; }
+    .why-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; margin: 0 auto 1rem;
+    }
+    .why-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--navy); }
+    .why-item p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ── AREA ── */
+    #area { background: var(--navy); }
+    #area h2 { color: white; }
+    #area .section-label { color: var(--orange); }
+    #area .section-sub { color: rgba(255,255,255,0.7); }
+    .area-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 2.5rem;
+    }
+    .area-card {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 1.25rem 1rem; text-align: center;
+    }
+    .area-card .city { color: white; font-weight: 700; font-size: 1rem; }
+    .area-card .county { color: rgba(255,255,255,0.55); font-size: 0.8rem; margin-top: 0.2rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--gray); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .contact-info h3 { font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: 1.5rem; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .contact-item-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--navy); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-item-text strong { display: block; font-weight: 700; color: var(--navy); margin-bottom: 0.15rem; }
+    .contact-item-text span { color: var(--muted); font-size: 0.9rem; }
+    .contact-item-text a { color: var(--navy); text-decoration: none; font-weight: 600; }
+    .contact-item-text a:hover { color: var(--orange); }
+
+    /* Form */
+    .contact-form { background: white; border-radius: 16px; padding: 2rem; border: 1px solid #e2e8f0; }
+    .contact-form h3 { font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 0.7rem 0.9rem;
+      border: 1.5px solid #e2e8f0; border-radius: 8px;
+      font-size: 0.9rem; font-family: inherit; color: var(--text);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--navy);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      width: 100%; background: var(--orange); color: white;
+      border: none; padding: 0.9rem; border-radius: 10px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      font-family: inherit; transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--orange2); }
+    .form-note { color: var(--muted); font-size: 0.8rem; text-align: center; margin-top: 0.75rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a1e42; color: rgba(255,255,255,0.7);
+      padding: 2.5rem 5%; text-align: center;
+    }
+    footer strong { color: white; }
+    footer p { font-size: 0.88rem; line-height: 1.8; }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: white; }
+
+    /* ── PAYERS BANNER ── */
+    .payers {
+      background: white; padding: 2rem 5%;
+      border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;
+      text-align: center;
+    }
+    .payers p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+    .payers-list { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .payer-badge {
+      background: var(--gray); border: 1.5px solid #e2e8f0;
+      padding: 0.5rem 1.2rem; border-radius: 999px;
+      font-size: 0.88rem; font-weight: 600; color: var(--navy);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Assisting <span>Transport</span> LLC</div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#area">Service Area</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Serving Clark &amp; Floyd Counties, Indiana</div>
+    <h1>Your Ride to<br><span>Better Health</span></h1>
+    <p>Reliable, compassionate Non-Emergency Medical Transportation for patients who need a safe, on-time ride to their medical appointments.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">📋 Get a Free Quote</a>
+      <a href="tel:8127489123" class="btn-secondary">📞 (812) 748-9123</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>Clark &amp; Floyd</strong><span>Counties Served</span></div>
+      <div class="hero-stat"><strong>Medicaid</strong><span>Accepted</span></div>
+      <div class="hero-stat"><strong>Licensed</strong><span>&amp; Insured</span></div>
+    </div>
+  </section>
+
+  <!-- PAYERS -->
+  <div class="payers">
+    <p>Insurance &amp; Payers Accepted</p>
+    <div class="payers-list">
+      <span class="payer-badge">Medicaid</span>
+      <span class="payer-badge">Medicare</span>
+      <span class="payer-badge">Private Pay</span>
+      <span class="payer-badge">Insurance</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-header">
+      <div class="section-label">What We Offer</div>
+      <h2>Transportation Services</h2>
+      <p class="section-sub">We provide safe, comfortable rides for patients with a variety of mobility needs.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">♿</div>
+        <h3>Wheelchair Transport</h3>
+        <p>Fully equipped wheelchair accessible vehicles with trained drivers for patients who use wheelchairs or power chairs.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚶</div>
+        <h3>Ambulatory Transport</h3>
+        <p>Door-to-door rides for patients who can walk but need a reliable, safe ride to their medical appointments.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛏️</div>
+        <h3>Stretcher Transport</h3>
+        <p>Non-emergency stretcher transport for patients who need to remain lying down during transport.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏥</div>
+        <h3>Medical Appointments</h3>
+        <p>Rides to doctor visits, dialysis, physical therapy, specialist appointments, and more across Southern Indiana.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="section-header">
+      <div class="section-label">Why Choose Us</div>
+      <h2>The Assisting Transport Difference</h2>
+      <p class="section-sub">We treat every patient with the dignity and care they deserve on every single trip.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">✅</div>
+        <h3>Licensed &amp; Insured</h3>
+        <p>Fully licensed, insured, and compliant with Indiana NEMT regulations.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⏰</div>
+        <h3>On-Time Pickup</h3>
+        <p>We show up when we say we will so patients never miss an appointment.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💳</div>
+        <h3>Medicaid Accepted</h3>
+        <p>We work with Medicaid, Medicare, and most insurance providers.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">👨‍✈️</div>
+        <h3>Professional Drivers</h3>
+        <p>Background-checked, trained drivers who treat patients with respect and compassion.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📍</div>
+        <h3>Local Company</h3>
+        <p>Locally owned and operated — we know the roads and communities we serve.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📞</div>
+        <h3>Easy Scheduling</h3>
+        <p>Simple booking by phone. We work with facilities, case managers, and families.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section id="area">
+    <div class="section-header">
+      <div class="section-label">Where We Serve</div>
+      <h2>Service Area</h2>
+      <p class="section-sub">Proudly serving Clark and Floyd Counties in Southern Indiana with reliable medical transportation.</p>
+    </div>
+    <div class="area-grid">
+      <div class="area-card"><div class="city">Sellersburg</div><div class="county">Clark County</div></div>
+      <div class="area-card"><div class="city">Jeffersonville</div><div class="county">Clark County</div></div>
+      <div class="area-card"><div class="city">Clarksville</div><div class="county">Clark County</div></div>
+      <div class="area-card"><div class="city">Charlestown</div><div class="county">Clark County</div></div>
+      <div class="area-card"><div class="city">New Albany</div><div class="county">Floyd County</div></div>
+      <div class="area-card"><div class="city">Floyds Knobs</div><div class="county">Floyd County</div></div>
+      <div class="area-card"><div class="city">Georgetown</div><div class="county">Floyd County</div></div>
+      <div class="area-card"><div class="city">And surrounding areas</div><div class="county">Southern Indiana</div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label">Get In Touch</div>
+        <h2>Request a Ride or Get a Quote</h2>
+        <p class="section-sub" style="margin-bottom:2rem;">Call us or fill out the form and we will get back to you promptly.</p>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <strong>Phone</strong>
+            <span><a href="tel:8127489123">(812) 748-9123</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <span><a href="mailto:assistingtransportllc@gmail.com">assistingtransportllc@gmail.com</a></span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <strong>Address</strong>
+            <span>480 N Indiana Ave<br>Sellersburg, IN 47172</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Request a Quote</h3>
+        <form action="https://formspree.io/f/assistingtransportllc" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" name="firstName" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" name="lastName" placeholder="Smith" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" name="phone" placeholder="(812) 555-0000" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="you@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Pickup City</label>
+            <select name="pickupCity">
+              <option value="">Select a city...</option>
+              <option>Sellersburg</option>
+              <option>Jeffersonville</option>
+              <option>Clarksville</option>
+              <option>Charlestown</option>
+              <option>New Albany</option>
+              <option>Floyds Knobs</option>
+              <option>Georgetown</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Type of Transport Needed</label>
+            <select name="transportType">
+              <option value="">Select...</option>
+              <option>Ambulatory (can walk)</option>
+              <option>Wheelchair</option>
+              <option>Stretcher</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message / Additional Details</label>
+            <textarea name="message" placeholder="Tell us about your transportation needs, appointment details, or any questions..."></textarea>
+          </div>
+          <input type="hidden" name="_subject" value="New Quote Request - Assisting Transport" />
+          <input type="hidden" name="_replyto" value="assistingtransportllc@gmail.com" />
+          <button type="submit" class="form-submit">Send Quote Request</button>
+          <p class="form-note">We typically respond within a few hours during business hours.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Assisting Transport LLC</strong></p>
+    <p>480 N Indiana Ave, Sellersburg, IN 47172 &nbsp;|&nbsp; <a href="tel:8127489123">(812) 748-9123</a> &nbsp;|&nbsp; <a href="mailto:assistingtransportllc@gmail.com">assistingtransportllc@gmail.com</a></p>
+    <p style="margin-top:0.5rem;">Non-Emergency Medical Transportation serving Clark &amp; Floyd Counties, Indiana</p>
+    <p style="margin-top:1rem; font-size:0.78rem; opacity:0.5;">&copy; 2026 Assisting Transport LLC. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
