@@ -18,9 +18,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrYhrJll1Z3uoGr4MlHYV0vj2uy5iDqC8&libraries=places&v=weekly&loading=async"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrYhrJll1Z3uoGr4MlHYV0vj2uy5iDqC8&libraries=places"
           async
-          defer
         />
       </head>
       <body className="font-sans antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>

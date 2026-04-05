@@ -9,48 +9,39 @@ import { Phone, MessageCircle, MapPin, Clock, Send, CheckCircle } from "lucide-r
 export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [pickupVal, setPickupVal] = useState("");
-  const [dropoffVal, setDropoffVal] = useState("");
-  const pickupContainerRef = useRef<HTMLDivElement>(null);
-  const dropoffContainerRef = useRef<HTMLDivElement>(null);
+  const pickupRef = useRef<HTMLInputElement>(null);
+  const dropoffRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    const waitForGoogle = setInterval(() => {
-      const g = (window as any).google;
-      if (!g?.maps?.places) return;
-      clearInterval(waitForGoogle);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const w = window as any;
+    let interval: ReturnType<typeof setInterval> | null = null;
 
-      // Pickup
-      if (pickupContainerRef.current && pickupContainerRef.current.childElementCount === 0) {
-        const el = document.createElement("gmp-place-autocomplete") as any;
-        el.setAttribute("placeholder", "Start typing an address...");
-        el.setAttribute("country", "us");
-        el.style.cssText = "display:block;width:100%;--gmpx-font-size-body:16px;";
-        el.addEventListener("gmp-placeselect", async (e: any) => {
-          const place = e.place;
-          await place.fetchFields({ fields: ["formattedAddress"] });
-          setPickupVal(place.formattedAddress || "");
+    const attach = () => {
+      if (!w.google?.maps?.places?.Autocomplete) return false;
+      if (pickupRef.current && !pickupRef.current.dataset.ac) {
+        new w.google.maps.places.Autocomplete(pickupRef.current, {
+          types: ["address"],
+          componentRestrictions: { country: "us" },
         });
-        pickupContainerRef.current.appendChild(el);
+        pickupRef.current.dataset.ac = "1";
       }
+      if (dropoffRef.current && !dropoffRef.current.dataset.ac) {
+        new w.google.maps.places.Autocomplete(dropoffRef.current, {
+          types: ["address"],
+          componentRestrictions: { country: "us" },
+        });
+        dropoffRef.current.dataset.ac = "1";
+      }
+      return true;
+    };
 
-      // Dropoff
-      if (dropoffContainerRef.current && dropoffContainerRef.current.childElementCount === 0) {
-        const el = document.createElement("gmp-place-autocomplete") as any;
-        el.setAttribute("placeholder", "Start typing an address...");
-        el.setAttribute("country", "us");
-        el.style.cssText = "display:block;width:100%;--gmpx-font-size-body:16px;";
-        el.addEventListener("gmp-placeselect", async (e: any) => {
-          const place = e.place;
-          await place.fetchFields({ fields: ["formattedAddress"] });
-          setDropoffVal(place.formattedAddress || "");
-        });
-        dropoffContainerRef.current.appendChild(el);
-      }
-    }, 500);
-    return () => clearInterval(waitForGoogle);
-    /* eslint-enable @typescript-eslint/no-explicit-any */
+    if (!attach()) {
+      interval = setInterval(() => {
+        if (attach() && interval) clearInterval(interval);
+      }, 300);
+    }
+    return () => { if (interval) clearInterval(interval); };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -251,19 +242,31 @@ export function ContactSection() {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-bold text-primary mb-3">
+                    <label htmlFor="pickup" className="block text-sm font-bold text-primary mb-3">
                       Pickup Address
                     </label>
-                    <div ref={pickupContainerRef} className="rounded-xl border border-border bg-background shadow-sm overflow-hidden min-h-[56px] [&_input]:h-14 [&_input]:px-3 [&_input]:text-base [&_input]:border-none [&_input]:outline-none [&_input]:w-full" />
-                    <input type="hidden" name="pickup" value={pickupVal} />
+                    <input
+                      ref={pickupRef}
+                      id="pickup"
+                      name="pickup"
+                      placeholder="Start typing an address..."
+                      required
+                      className="flex h-14 w-full rounded-xl border border-border bg-background px-3 py-2 text-base shadow-sm focus:border-accent focus:ring-accent focus:outline-none"
+                    />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-primary mb-3">
+                    <label htmlFor="dropoff" className="block text-sm font-bold text-primary mb-3">
                       Drop-off Address
                     </label>
-                    <div ref={dropoffContainerRef} className="rounded-xl border border-border bg-background shadow-sm overflow-hidden min-h-[56px] [&_input]:h-14 [&_input]:px-3 [&_input]:text-base [&_input]:border-none [&_input]:outline-none [&_input]:w-full" />
-                    <input type="hidden" name="dropoff" value={dropoffVal} />
+                    <input
+                      ref={dropoffRef}
+                      id="dropoff"
+                      name="dropoff"
+                      placeholder="Start typing an address..."
+                      required
+                      className="flex h-14 w-full rounded-xl border border-border bg-background px-3 py-2 text-base shadow-sm focus:border-accent focus:ring-accent focus:outline-none"
+                    />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
