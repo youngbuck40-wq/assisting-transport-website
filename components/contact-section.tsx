@@ -1,7 +1,6 @@
 "use client";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,61 +9,6 @@ import { Phone, MessageCircle, MapPin, Clock, Send, CheckCircle } from "lucide-r
 export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [pickupAddress, setPickupAddress] = useState("");
-  const [dropoffAddress, setDropoffAddress] = useState("");
-  const pickupContainerRef = useRef<HTMLDivElement>(null);
-  const dropoffContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const w = window as any;
-    const initAutocomplete = () => {
-      if (!w.google?.maps?.places?.PlaceAutocompleteElement) return;
-
-      // Pickup autocomplete
-      if (pickupContainerRef.current && !pickupContainerRef.current.hasChildNodes()) {
-        const pickupEl = new w.google.maps.places.PlaceAutocompleteElement({
-          componentRestrictions: { country: "us" },
-          types: ["address"],
-        });
-        pickupEl.style.cssText = "width:100%;";
-        pickupEl.addEventListener("gmp-placeselect", (e: any) => {
-          const place = e.place;
-          if (place?.displayName) {
-            setPickupAddress(place.formattedAddress || place.displayName);
-          }
-        });
-        pickupContainerRef.current.appendChild(pickupEl);
-      }
-
-      // Dropoff autocomplete
-      if (dropoffContainerRef.current && !dropoffContainerRef.current.hasChildNodes()) {
-        const dropoffEl = new w.google.maps.places.PlaceAutocompleteElement({
-          componentRestrictions: { country: "us" },
-          types: ["address"],
-        });
-        dropoffEl.style.cssText = "width:100%;";
-        dropoffEl.addEventListener("gmp-placeselect", (e: any) => {
-          const place = e.place;
-          if (place?.displayName) {
-            setDropoffAddress(place.formattedAddress || place.displayName);
-          }
-        });
-        dropoffContainerRef.current.appendChild(dropoffEl);
-      }
-    };
-
-    if (w.google?.maps?.places?.PlaceAutocompleteElement) {
-      initAutocomplete();
-    } else {
-      const interval = setInterval(() => {
-        if (w.google?.maps?.places?.PlaceAutocompleteElement) {
-          clearInterval(interval);
-          initAutocomplete();
-        }
-      }, 500);
-      return () => clearInterval(interval);
-    }
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -264,19 +208,29 @@ export function ContactSection() {
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-bold text-primary mb-3">
+                    <label htmlFor="pickup" className="block text-sm font-bold text-primary mb-3">
                       Pickup Address
                     </label>
-                    <div ref={pickupContainerRef} className="rounded-xl border border-border bg-background shadow-sm overflow-hidden [&_input]:h-14 [&_input]:px-3 [&_input]:text-base [&_input]:w-full [&_input]:outline-none" />
-                    <input type="hidden" name="pickup" value={pickupAddress} />
+                    <Input
+                      id="pickup"
+                      name="pickup"
+                      placeholder="123 Main St, Jeffersonville, IN"
+                      required
+                      className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
+                    />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-primary mb-3">
+                    <label htmlFor="dropoff" className="block text-sm font-bold text-primary mb-3">
                       Drop-off Address
                     </label>
-                    <div ref={dropoffContainerRef} className="rounded-xl border border-border bg-background shadow-sm overflow-hidden [&_input]:h-14 [&_input]:px-3 [&_input]:text-base [&_input]:w-full [&_input]:outline-none" />
-                    <input type="hidden" name="dropoff" value={dropoffAddress} />
+                    <Input
+                      id="dropoff"
+                      name="dropoff"
+                      placeholder="456 Oak Ave, Louisville, KY"
+                      required
+                      className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
+                    />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
