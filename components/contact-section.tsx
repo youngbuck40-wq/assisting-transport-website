@@ -13,10 +13,20 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const form = e.currentTarget;
+      const response = await fetch("https://formspree.io/f/mreoovay", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (response.ok) {
+        setIsSubmitted(true);
+      }
+    } catch {
+      // silently fail
+    }
     setIsLoading(false);
-    setIsSubmitted(true);
   };
 
   return (
