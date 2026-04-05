@@ -192,6 +192,38 @@ export function ContactSection() {
                     />
                   </div>
 
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="tripType" className="block text-sm font-bold text-primary mb-3">
+                        Trip Type
+                      </label>
+                      <select
+                        id="tripType"
+                        name="tripType"
+                        required
+                        className="flex h-14 w-full rounded-xl border border-border bg-background px-3 py-2 text-base shadow-sm focus:border-accent focus:ring-accent focus:outline-none"
+                      >
+                        <option value="">Select...</option>
+                        <option value="Ambulatory">Ambulatory</option>
+                        <option value="Wheelchair">Wheelchair</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="escort" className="block text-sm font-bold text-primary mb-3">
+                        Escort Needed?
+                      </label>
+                      <select
+                        id="escort"
+                        name="escort"
+                        required
+                        className="flex h-14 w-full rounded-xl border border-border bg-background px-3 py-2 text-base shadow-sm focus:border-accent focus:ring-accent focus:outline-none"
+                      >
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                      </select>
+                    </div>
+                  </div>
+
                   <div>
                     <label htmlFor="datetime" className="block text-sm font-bold text-primary mb-3">
                       Preferred Date & Time
