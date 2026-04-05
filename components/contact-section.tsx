@@ -167,18 +167,44 @@ export function ContactSection() {
                   </div>
                   
                   <div>
-                    <label htmlFor="city" className="block text-sm font-bold text-primary mb-3">
-                      Pickup City
+                    <label htmlFor="pickup" className="block text-sm font-bold text-primary mb-3">
+                      Pickup Address
                     </label>
                     <Input
-                      id="city"
-                      name="city"
-                      placeholder="Jeffersonville, New Albany, etc."
+                      id="pickup"
+                      name="pickup"
+                      placeholder="123 Main St, Jeffersonville, IN"
                       required
                       className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
                     />
                   </div>
-                  
+
+                  <div>
+                    <label htmlFor="dropoff" className="block text-sm font-bold text-primary mb-3">
+                      Drop-off Address
+                    </label>
+                    <Input
+                      id="dropoff"
+                      name="dropoff"
+                      placeholder="456 Oak Ave, Louisville, KY"
+                      required
+                      className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="datetime" className="block text-sm font-bold text-primary mb-3">
+                      Preferred Date & Time
+                    </label>
+                    <Input
+                      id="datetime"
+                      name="datetime"
+                      type="datetime-local"
+                      required
+                      className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
+                    />
+                  </div>
+
                   <div>
                     <label htmlFor="message" className="block text-sm font-bold text-primary mb-3">
                       Message
@@ -186,7 +212,7 @@ export function ContactSection() {
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="Tell us about your transportation needs..."
+                      placeholder="Tell us about your transportation needs (wheelchair, round trip, etc.)..."
                       rows={4}
                       className="bg-background border-border focus:border-accent focus:ring-accent resize-none text-base rounded-xl shadow-sm"
                     />
