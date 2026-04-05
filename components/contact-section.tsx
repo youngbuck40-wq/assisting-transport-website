@@ -1,5 +1,6 @@
 "use client";
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,27 +14,28 @@ export function ContactSection() {
   const dropoffRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    const w = window as any;
     const initAutocomplete = () => {
-      if (!window.google?.maps?.places) return;
+      if (!w.google?.maps?.places) return;
       if (pickupRef.current) {
-        new window.google.maps.places.Autocomplete(pickupRef.current, {
+        new w.google.maps.places.Autocomplete(pickupRef.current, {
           types: ["address"],
           componentRestrictions: { country: "us" },
         });
       }
       if (dropoffRef.current) {
-        new window.google.maps.places.Autocomplete(dropoffRef.current, {
+        new w.google.maps.places.Autocomplete(dropoffRef.current, {
           types: ["address"],
           componentRestrictions: { country: "us" },
         });
       }
     };
 
-    if (window.google?.maps?.places) {
+    if (w.google?.maps?.places) {
       initAutocomplete();
     } else {
       const interval = setInterval(() => {
-        if (window.google?.maps?.places) {
+        if (w.google?.maps?.places) {
           clearInterval(interval);
           initAutocomplete();
         }
