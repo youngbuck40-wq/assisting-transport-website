@@ -92,6 +92,7 @@ export function ContactSection() {
         body: JSON.stringify({
           name: formData.get("name"),
           phone: formData.get("phone"),
+          email: formData.get("email") || null,
           pickup: formData.get("pickup"),
           dropoff: formData.get("dropoff"),
           trip_type: formData.get("tripType"),
@@ -234,18 +235,32 @@ export function ContactSection() {
                     />
                   </div>
                   
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-bold text-primary mb-3">
-                      Phone Number
-                    </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="(812) 555-0123"
-                      required
-                      className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
-                    />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-bold text-primary mb-3">
+                        Phone Number
+                      </label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        placeholder="(812) 555-0123"
+                        required
+                        className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-bold text-primary mb-3">
+                        Email (optional)
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        placeholder="you@email.com"
+                        className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
+                      />
+                    </div>
                   </div>
                   
                   <div>
