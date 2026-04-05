@@ -47,14 +47,37 @@ export function ContactSection() {
     setIsLoading(true);
     try {
       const form = e.currentTarget;
-      const response = await fetch("https://formspree.io/f/mreoovay", {
+      const formData = new FormData(form);
+
+      // Send to Formspree (email backup)
+      fetch("https://formspree.io/f/mreoovay", {
         method: "POST",
-        body: new FormData(form),
+        body: formData,
         headers: { Accept: "application/json" },
       });
-      if (response.ok) {
-        setIsSubmitted(true);
-      }
+
+      // Send to Supabase (admin dashboard)
+      fetch("https://vtmewnkdeqctjzqvyjpl.supabase.co/rest/v1/quote_requests", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0bWV3bmtkZXFjdGp6cXZ5anBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwNDI3MDIsImV4cCI6MjA4NzYxODcwMn0.qJFQTLXFbjeJtnMRrrWy76vvZBeI9zZY22FP8HZuxn4",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0bWV3bmtkZXFjdGp6cXZ5anBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwNDI3MDIsImV4cCI6MjA4NzYxODcwMn0.qJFQTLXFbjeJtnMRrrWy76vvZBeI9zZY22FP8HZuxn4",
+          "Prefer": "return=minimal",
+        },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          phone: formData.get("phone"),
+          pickup: formData.get("pickup"),
+          dropoff: formData.get("dropoff"),
+          trip_type: formData.get("tripType"),
+          escort: formData.get("escort"),
+          preferred_datetime: formData.get("datetime"),
+          message: formData.get("message"),
+        }),
+      });
+
+      setIsSubmitted(true);
     } catch {
       // silently fail
     }
