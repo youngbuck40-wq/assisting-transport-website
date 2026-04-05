@@ -57,7 +57,7 @@ export function ContactSection() {
       });
 
       // Send to Supabase (admin dashboard)
-      fetch("https://vtmewnkdeqctjzqvyjpl.supabase.co/rest/v1/quote_requests", {
+      const supaRes = await fetch("https://vtmewnkdeqctjzqvyjpl.supabase.co/rest/v1/quote_requests", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,6 +76,9 @@ export function ContactSection() {
           message: formData.get("message"),
         }),
       });
+      if (!supaRes.ok) {
+        console.error("Supabase error:", supaRes.status, await supaRes.text());
+      }
 
       setIsSubmitted(true);
     } catch {
