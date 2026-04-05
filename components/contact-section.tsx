@@ -10,32 +10,54 @@ import { Phone, MessageCircle, MapPin, Clock, Send, CheckCircle } from "lucide-r
 export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const pickupRef = useRef<HTMLInputElement>(null);
-  const dropoffRef = useRef<HTMLInputElement>(null);
+  const [pickupAddress, setPickupAddress] = useState("");
+  const [dropoffAddress, setDropoffAddress] = useState("");
+  const pickupContainerRef = useRef<HTMLDivElement>(null);
+  const dropoffContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const w = window as any;
     const initAutocomplete = () => {
-      if (!w.google?.maps?.places) return;
-      if (pickupRef.current) {
-        new w.google.maps.places.Autocomplete(pickupRef.current, {
-          types: ["address"],
+      if (!w.google?.maps?.places?.PlaceAutocompleteElement) return;
+
+      // Pickup autocomplete
+      if (pickupContainerRef.current && !pickupContainerRef.current.hasChildNodes()) {
+        const pickupEl = new w.google.maps.places.PlaceAutocompleteElement({
           componentRestrictions: { country: "us" },
+          types: ["address"],
         });
+        pickupEl.style.cssText = "width:100%;";
+        pickupEl.addEventListener("gmp-placeselect", (e: any) => {
+          const place = e.place;
+          if (place?.displayName) {
+            setPickupAddress(place.formattedAddress || place.displayName);
+          }
+        });
+        pickupContainerRef.current.appendChild(pickupEl);
       }
-      if (dropoffRef.current) {
-        new w.google.maps.places.Autocomplete(dropoffRef.current, {
-          types: ["address"],
+
+      // Dropoff autocomplete
+      if (dropoffContainerRef.current && !dropoffContainerRef.current.hasChildNodes()) {
+        const dropoffEl = new w.google.maps.places.PlaceAutocompleteElement({
           componentRestrictions: { country: "us" },
+          types: ["address"],
         });
+        dropoffEl.style.cssText = "width:100%;";
+        dropoffEl.addEventListener("gmp-placeselect", (e: any) => {
+          const place = e.place;
+          if (place?.displayName) {
+            setDropoffAddress(place.formattedAddress || place.displayName);
+          }
+        });
+        dropoffContainerRef.current.appendChild(dropoffEl);
       }
     };
 
-    if (w.google?.maps?.places) {
+    if (w.google?.maps?.places?.PlaceAutocompleteElement) {
       initAutocomplete();
     } else {
       const interval = setInterval(() => {
-        if (w.google?.maps?.places) {
+        if (w.google?.maps?.places?.PlaceAutocompleteElement) {
           clearInterval(interval);
           initAutocomplete();
         }
@@ -227,31 +249,19 @@ export function ContactSection() {
                   </div>
                   
                   <div>
-                    <label htmlFor="pickup" className="block text-sm font-bold text-primary mb-3">
+                    <label className="block text-sm font-bold text-primary mb-3">
                       Pickup Address
                     </label>
-                    <input
-                      ref={pickupRef}
-                      id="pickup"
-                      name="pickup"
-                      placeholder="Start typing an address..."
-                      required
-                      className="flex h-14 w-full rounded-xl border border-border bg-background px-3 py-2 text-base shadow-sm focus:border-accent focus:ring-accent focus:outline-none"
-                    />
+                    <div ref={pickupContainerRef} className="rounded-xl border border-border bg-background shadow-sm overflow-hidden [&_input]:h-14 [&_input]:px-3 [&_input]:text-base [&_input]:w-full [&_input]:outline-none" />
+                    <input type="hidden" name="pickup" value={pickupAddress} />
                   </div>
 
                   <div>
-                    <label htmlFor="dropoff" className="block text-sm font-bold text-primary mb-3">
+                    <label className="block text-sm font-bold text-primary mb-3">
                       Drop-off Address
                     </label>
-                    <input
-                      ref={dropoffRef}
-                      id="dropoff"
-                      name="dropoff"
-                      placeholder="Start typing an address..."
-                      required
-                      className="flex h-14 w-full rounded-xl border border-border bg-background px-3 py-2 text-base shadow-sm focus:border-accent focus:ring-accent focus:outline-none"
-                    />
+                    <div ref={dropoffContainerRef} className="rounded-xl border border-border bg-background shadow-sm overflow-hidden [&_input]:h-14 [&_input]:px-3 [&_input]:text-base [&_input]:w-full [&_input]:outline-none" />
+                    <input type="hidden" name="dropoff" value={dropoffAddress} />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
