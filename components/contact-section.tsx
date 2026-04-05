@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,6 +9,38 @@ import { Phone, MessageCircle, MapPin, Clock, Send, CheckCircle } from "lucide-r
 export function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const pickupRef = useRef<HTMLInputElement>(null);
+  const dropoffRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const initAutocomplete = () => {
+      if (!window.google?.maps?.places) return;
+      if (pickupRef.current) {
+        new window.google.maps.places.Autocomplete(pickupRef.current, {
+          types: ["address"],
+          componentRestrictions: { country: "us" },
+        });
+      }
+      if (dropoffRef.current) {
+        new window.google.maps.places.Autocomplete(dropoffRef.current, {
+          types: ["address"],
+          componentRestrictions: { country: "us" },
+        });
+      }
+    };
+
+    if (window.google?.maps?.places) {
+      initAutocomplete();
+    } else {
+      const interval = setInterval(() => {
+        if (window.google?.maps?.places) {
+          clearInterval(interval);
+          initAutocomplete();
+        }
+      }, 500);
+      return () => clearInterval(interval);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -170,12 +202,13 @@ export function ContactSection() {
                     <label htmlFor="pickup" className="block text-sm font-bold text-primary mb-3">
                       Pickup Address
                     </label>
-                    <Input
+                    <input
+                      ref={pickupRef}
                       id="pickup"
                       name="pickup"
-                      placeholder="123 Main St, Jeffersonville, IN"
+                      placeholder="Start typing an address..."
                       required
-                      className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
+                      className="flex h-14 w-full rounded-xl border border-border bg-background px-3 py-2 text-base shadow-sm focus:border-accent focus:ring-accent focus:outline-none"
                     />
                   </div>
 
@@ -183,12 +216,13 @@ export function ContactSection() {
                     <label htmlFor="dropoff" className="block text-sm font-bold text-primary mb-3">
                       Drop-off Address
                     </label>
-                    <Input
+                    <input
+                      ref={dropoffRef}
                       id="dropoff"
                       name="dropoff"
-                      placeholder="456 Oak Ave, Louisville, KY"
+                      placeholder="Start typing an address..."
                       required
-                      className="bg-background border-border focus:border-accent focus:ring-accent h-14 text-base rounded-xl shadow-sm"
+                      className="flex h-14 w-full rounded-xl border border-border bg-background px-3 py-2 text-base shadow-sm focus:border-accent focus:ring-accent focus:outline-none"
                     />
                   </div>
 
