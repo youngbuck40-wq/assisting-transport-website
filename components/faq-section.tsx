@@ -15,11 +15,6 @@ const faqs = [
       "We recommend booking at least 24 hours in advance, but we do our best to accommodate same-day requests. Call us at (812) 748-9123 to check availability.",
   },
   {
-    question: "Do you accept Medicaid?",
-    answer:
-      "Yes, we accept Medicaid, Medicare, and most insurance plans. We also accept private pay. Contact us for details about your specific plan.",
-  },
-  {
     question: "Can a family member ride along?",
     answer:
       "Yes! A family member or caregiver is welcome to ride along at no extra charge.",
